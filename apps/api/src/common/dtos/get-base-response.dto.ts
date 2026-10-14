@@ -1,7 +1,7 @@
 import { GetBaseInfoDto } from './get-base-info.dto.js';
 
-export class GetBaseResponseDto<T> {
-  items: T[];
+export class GetBaseResponseDto<TItem> {
+  items: TItem[];
 
   info: GetBaseInfoDto;
 
