@@ -1,4 +1,4 @@
-import { LoanApplicationStatus } from '../../../types/knex.types.js';
+import { LoanApplicationStatus } from '../constants/loan-application.status.constants.js';
 
 export type LoanApplicationRow = {
   id: number;

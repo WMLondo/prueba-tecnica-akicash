@@ -1,5 +1,5 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { Knex } from 'knex';
+import * as knex from 'knex';
 import { GetBaseInfoDto } from '../common/dtos/get-base-info.dto.js';
 import { GetBaseResponseDto } from '../common/dtos/get-base-response.dto.js';
 import { KNEX_CONNECTION } from '../common/providers/knex.provider.js';
@@ -15,7 +15,7 @@ import { CreateInstallmentData } from './types/create-installment-data.type.js';
 export class LoanApplicationService {
   constructor(
     private readonly repository: LoanApplicationRepository,
-    @Inject(KNEX_CONNECTION) private readonly knex: Knex,
+    @Inject(KNEX_CONNECTION) private readonly knex: knex.Knex,
   ) {}
 
   async findPaged(
