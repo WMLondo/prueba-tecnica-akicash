@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { Knex } from 'knex';
+import type { Knex } from 'knex';
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ const config: { [key: string]: Knex.Config } = {
       port: Number(process.env.DB_PORT),
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      database: process.env.DB_DATABASE,
     },
     migrations: {
       directory: './migrations',
