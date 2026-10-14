@@ -6,6 +6,7 @@ import { Button } from "../../../shared/components/ui/button";
 import { useCreateLoanApplicationCommand } from "../api/commands/use-create-loan-application-command";
 import { LOAN_STATUS_OPTIONS } from "../constants/loan-status-options.constants";
 import { LOAN_APPLICATION_STATUS } from "../constants/loan-status.constants";
+import { ClientComboboxField } from "./client-combobox-field";
 import {
   createLoanApplicationFormSchema,
   type CreateLoanApplicationFormOutput,
@@ -57,14 +58,13 @@ export const CreateLoanApplicationForm = ({
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
-      <TextField
+      <ClientComboboxField
         id="clientId"
         control={control}
         name="clientId"
-        label="ID del cliente"
-        type="number"
+        label="Cliente"
         isRequired
-        placeholder="1"
+        placeholder="Buscar cliente..."
       />
       <TextField
         id="requestedAmount"
@@ -72,6 +72,8 @@ export const CreateLoanApplicationForm = ({
         name="requestedAmount"
         label="Monto solicitado"
         type="number"
+        min={1}
+        step="0.01"
         isRequired
         placeholder="10000.00"
       />
@@ -81,6 +83,9 @@ export const CreateLoanApplicationForm = ({
         name="termMonths"
         label="Plazo (meses)"
         type="number"
+        min={1}
+        max={360}
+        step="1"
         isRequired
         placeholder="12"
       />

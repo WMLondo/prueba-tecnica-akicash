@@ -19,8 +19,8 @@ export const createLoanApplicationFormSchema = z.object({
       error: "Máximo 2 decimales",
       abort: true,
     })
-    .refine((value) => Number(value) > 0, {
-      error: "Debe ser un número positivo",
+    .refine((value) => Number(value) >= 1, {
+      error: "El mínimo es 1",
       abort: true,
     })
     .transform(Number),

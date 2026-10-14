@@ -17,7 +17,7 @@ export class CreateLoanApplicationDto {
   clientId: number;
 
   @IsNumber({ maxDecimalPlaces: 2 })
-  @IsPositive()
+  @Min(1)
   requestedAmount: number;
 
   @IsInt()
