@@ -30,7 +30,7 @@ export class LoanApplicationRepository {
         'c.full_name as clientFullName',
         'c.dni as clientDni',
       )
-      .orderBy('created_at', 'desc')
+      .orderBy('la.created_at', 'desc')
       .limit(limit)
       .offset(offset);
   }

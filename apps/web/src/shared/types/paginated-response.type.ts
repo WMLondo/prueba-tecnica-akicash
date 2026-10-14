@@ -1,6 +1,7 @@
+import type { PaginationInfo } from "./pagination-info.type";
+
 export type PaginatedResponse<TItems> = {
   items: TItems[];
-  total: number;
-  page: number;
-  limit: number;
+  info: PaginationInfo;
+  totalCount: number;
 };

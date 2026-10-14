@@ -12,8 +12,9 @@ import { Field, FieldDescription, FieldError, FieldLabel } from "../ui/field";
 export type BaseFieldProps<
   TFieldValues extends FieldValues,
   TName extends Path<TFieldValues> = Path<TFieldValues>,
+  TTransformedValues = TFieldValues,
 > = {
-  control: Control<TFieldValues>;
+  control: Control<TFieldValues, unknown, TTransformedValues>;
   name: TName;
   label: string;
   description?: string;
@@ -24,7 +25,8 @@ export type BaseFieldProps<
 type InnerBaseFieldProps<
   TFieldValues extends FieldValues,
   TName extends Path<TFieldValues>,
-> = BaseFieldProps<TFieldValues, TName> & {
+  TTransformedValues,
+> = BaseFieldProps<TFieldValues, TName, TTransformedValues> & {
   children: (props: {
     field: ControllerRenderProps<TFieldValues, TName>;
     fieldState: ControllerFieldState;
@@ -34,6 +36,7 @@ type InnerBaseFieldProps<
 export const BaseField = <
   TFieldValues extends FieldValues,
   TName extends Path<TFieldValues> = Path<TFieldValues>,
+  TTransformedValues = TFieldValues,
 >({
   control,
   name,
@@ -42,7 +45,7 @@ export const BaseField = <
   children,
   isRequired = false,
   id,
-}: InnerBaseFieldProps<TFieldValues, TName>) => {
+}: InnerBaseFieldProps<TFieldValues, TName, TTransformedValues>) => {
   return (
     <Controller
       name={name}

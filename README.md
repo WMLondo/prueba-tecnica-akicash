@@ -1,3 +1,5 @@
+## Base de datos MySQL
+
 1. Monto total desembolsado (solicitudes 'approved') por cliente en un rango de fechas dado.
 
 ```ts
@@ -65,3 +67,17 @@ CREATE INDEX idx_installment_due_paid
 CREATE INDEX idx_installment_loan_app
   ON installment (loan_application_id);
 ```
+
+## Preguntas de criterio
+
+1. ¿Cuándo usarías una transacción con Knex en este ejercicio, y en qué parte del flujo la aplicarías?
+
+Repuesta: Usaría una transacción, cuando quiero garantizar que se ejecute todos los pasos según lo previsto o no se ejecute en absoluto, no teniendo problemas de datos parciales.
+
+2. ¿Qué diferencia práctica hay entre un Guard y un Interceptor en NestJS?
+
+Repuesta: El Guard decide si la request puede continuar o no y un interceptor puede loguear, cachear y transformar una request y la response.
+
+3. ¿Qué harías para evitar que la tabla de solicitudes en React se re-renderice innecesariamente al escribir en el buscador?
+
+Repuesta:Aplicaría un debounce en el valor del buscador
